@@ -31,9 +31,14 @@ WORKDIR /usr/local
 
 ADD ./SU2 /usr/local/SU2
 
-COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
-
 RUN export SU2_HOME=/data/SU2_HOME
 RUN export SU2_RUN=/usr/local/SU2/bin
 RUN export PATH=$SU2_RUN:$PATH
 RUN export PYTHONPATH=$SU2_RUN:$PYTHONPATH
+
+# Ensure execute permissions are set on compileSU2.sh
+USER root
+RUN	chmod -R 777 /data/SU2_HOME
+USER nimbix
+
+COPY ./NAE/AppDef.json /etc/NAE/AppDef.json

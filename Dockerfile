@@ -38,7 +38,7 @@ RUN export PYTHONPATH=$SU2_RUN:$PYTHONPATH
 
 # Ensure execute permissions are set on compileSU2.sh
 USER root
-RUN	chmod -R 777 /data/SU2_HOME
+RUN chmod -R 777 /data/SU2_HOME
 USER nimbix
 
 COPY ./NAE/AppDef.json /etc/NAE/AppDef.json

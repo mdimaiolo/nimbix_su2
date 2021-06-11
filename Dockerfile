@@ -25,16 +25,12 @@ RUN mkdir -p /usr/local/SU2
 
 ADD ./SU2 /usr/local/SU2
 
-WORKDIR /data/SU2_HOME
-
 ADD ./init /data/SU2_HOME
 
-WORKDIR /
-
-RUN export SU2_HOME=/data/SU2_HOME && \
-	export SU2_RUN=/usr/local/SU2/bin && \
-	export PATH=$SU2_RUN:$PATH && \
-	export PYTHONPATH=$SU2_RUN:$PYTHONPATH
+RUN export SU2_HOME=/data/SU2_HOME
+RUN export SU2_RUN=/usr/local/SU2/bin
+RUN export PATH=$SU2_RUN:$PATH
+RUN export PYTHONPATH=$SU2_RUN:$PYTHONPATH
 
 # Copied from nimbix/image-common
 RUN apt-get -y update && \

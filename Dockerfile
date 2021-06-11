@@ -1,6 +1,8 @@
 FROM ubuntu:18.04
 ENV LANG C.UTF-8
 
+USER root
+
 RUN apt-get update && apt-get install -y \
     python3 \
     pkg-config \
@@ -31,6 +33,8 @@ RUN mkdir -p /usr/local/SU2
 
 ADD ./SU2 /usr/local/SU2
 ADD ./init /usr/local/SU2
+
+USER nimbix
 
 RUN export SU2_HOME=/data/SU2_HOME
 RUN export SU2_RUN=/usr/local/SU2/bin

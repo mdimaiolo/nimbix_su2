@@ -38,8 +38,6 @@ ADD --chown=nimbix:nimbix ./init /usr/local/SU2
 
 RUN sudo chmod -R 0777 /usr/local/SU2
 
-WORKDIR /
-
 RUN export SU2_HOME=/data/SU2_HOME
 RUN export SU2_RUN=/usr/local/SU2/bin
 RUN export PATH=$SU2_RUN:$PATH

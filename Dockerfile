@@ -38,11 +38,6 @@ ADD --chown=root:root ./init /usr/local/SU2
 
 RUN sudo chmod -R 0777 /usr/local/SU2
 
-RUN export SU2_HOME=/data/SU2_HOME
-RUN export SU2_RUN=/usr/local/SU2/bin
-RUN export PATH=$SU2_RUN:$PATH
-RUN export PYTHONPATH=$SU2_RUN:$PYTHONPATH
-
 COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
 
 CMD /usr/local/SU2/init.sh

@@ -43,8 +43,6 @@ RUN export SU2_RUN=/usr/local/SU2/bin
 RUN export PATH=$SU2_RUN:$PATH
 RUN export PYTHONPATH=$SU2_RUN:$PYTHONPATH
 
-RUN cp -R /data/SU2_HOME /home/nimbix
-
 COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
 
-CMD /usr/local/SU2/init.sh
+CMD sudo /usr/local/SU2/init.sh

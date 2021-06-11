@@ -33,8 +33,8 @@ WORKDIR /usr/local
 
 RUN mkdir -p /usr/local/SU2
 
-ADD --chown=nimbix:nimbix ./SU2 /usr/local/SU2
-ADD --chown=nimbix:nimbix ./init /usr/local/SU2
+ADD --chown=root:root ./SU2 /usr/local/SU2
+ADD --chown=root:root ./init /usr/local/SU2
 
 RUN sudo chmod -R 0777 /usr/local/SU2
 
@@ -45,4 +45,4 @@ RUN export PYTHONPATH=$SU2_RUN:$PYTHONPATH
 
 COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
 
-RUN sudo /usr/local/SU2/init.sh
+CMD /usr/local/SU2/init.sh

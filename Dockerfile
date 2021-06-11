@@ -34,8 +34,6 @@ RUN mkdir -p /usr/local/SU2
 ADD ./SU2 /usr/local/SU2
 ADD ./init /usr/local/SU2
 
-USER nimbix
-
 RUN export SU2_HOME=/data/SU2_HOME
 RUN export SU2_RUN=/usr/local/SU2/bin
 RUN export PATH=$SU2_RUN:$PATH

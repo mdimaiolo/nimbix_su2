@@ -19,15 +19,15 @@ RUN apt-get update && apt-get install -y \
 # && /usr/sbin/update-ccache-symlinks \
 # && echo 'export PATH="/usr/lib/ccache:$PATH"' | tee -a ~/.bashrc 
 
-WORKDIR /usr/local
+WORKDIR /
 
 RUN mkdir -p /usr/local/SU2
 
 ADD ./SU2 /usr/local/SU2
 
-WORKDIR /data
+WORKDIR /data/SU2_HOME
 
-ADD ./init /data
+ADD ./init /data/SU2_HOME
 
 WORKDIR /
 
@@ -48,4 +48,4 @@ EXPOSE 22
 
 COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
 
-CMD sudo /data/init.sh
+CMD sudo /data/SU2_HOME/init.sh

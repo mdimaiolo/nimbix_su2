@@ -1,9 +1,13 @@
 #! /bin/bash
 
+cd /
+
 export SU2_HOME=/data/SU2
 export SU2_RUN=/usr/local/SU2/bin
-export PATH=$SU2_RUN:$PATH
-export PYTHONPATH=$SU2_RUN:$PYTHONPATH
+export PATH=$PATH:$SU2_RUN
+export PYTHONPATH=$PYTHONPATH:$SU2_RUN
+
+sudo ln -s /usr/bin/python3 /usr/bin/python
 
 cd /data/SU2
 

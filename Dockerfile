@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     swig \
     libopenmpi-dev \
     openmpi-bin \
+    mpich \
     ccache
 # && rm -rf /var/lib/apt/lists/* \
 # && update-alternatives --install /usr/bin/python python /usr/bin/python3 10 \

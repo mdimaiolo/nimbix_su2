@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 ENV LANG C.UTF-8
 
-SHELL ["/bin/bash", "-c"]
+#SHELL ["/bin/bash", "-c"]
 
 USER root
 

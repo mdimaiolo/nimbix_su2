@@ -1,6 +1,5 @@
 #! /bin/bash
 
-#sudo chmod -R 0777 /usr/local/SU2
-#sudo chmod -R 0777 /data/SU2_HOME
+sudo cp -R /data/SU2_HOME /home/nimbix
 
-#cd /data
+cd /home/nimbix

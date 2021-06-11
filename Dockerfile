@@ -45,4 +45,4 @@ RUN export PYTHONPATH=$SU2_RUN:$PYTHONPATH
 
 COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
 
-CMD sudo /usr/local/SU2/init.sh
+RUN sudo /usr/local/SU2/init.sh

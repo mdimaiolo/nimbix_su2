@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 ENV LANG C.UTF-8
 
-#SHELL ["/bin/bash", "-c"]
+SHELL ["/bin/bash", "-c"]
 
 USER root
 
@@ -25,8 +25,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /usr/local
 
-RUN mkdir -p /usr/local/SU2 &&\
-	chmod -R 0777 /usr/local/SU2
+RUN mkdir -p /usr/local/SU2
+RUN chmod -R 0777 /usr/local/SU2
 
 #RUN curl -O "https://github.com/su2code/SU2/releases/download/v7.1.1/SU2-v7.1.1-linux64-mpi.zip"
 #RUN tar xvf "SU2-v7.1.1-linux64-mpi.zip"

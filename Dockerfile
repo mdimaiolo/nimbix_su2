@@ -23,19 +23,18 @@ WORKDIR /usr/local
 
 RUN mkdir -p /usr/local/SU2
 
-#RUN curl -O "https://github.com/su2code/SU2/releases/download/v7.1.1/SU2-v7.1.1-linux64-mpi.zip"
-#RUN tar xvf "SU2-v7.1.1-linux64-mpi.zip"
-
-#RUN mv /usr/local/src/SU2-v7.1.1-linux64-mpi /usr/local/SU2
-#RUN rm "/usr/local/src/SU2-v7.1.1-linux64-mpi.zip"
-
 ADD ./SU2 /usr/local/SU2
-ADD ./init /home/nimbix
 
-RUN export SU2_HOME=/data/SU2_HOME
-RUN export SU2_RUN=/usr/local/SU2/bin
-RUN export PATH=$SU2_RUN:$PATH
-RUN export PYTHONPATH=$SU2_RUN:$PYTHONPATH
+WORKDIR /data
+
+ADD ./init /data
+
+WORKDIR /
+
+RUN export SU2_HOME=/data/SU2_HOME && \
+	export SU2_RUN=/usr/local/SU2/bin && \
+	export PATH=$SU2_RUN:$PATH && \
+	export PYTHONPATH=$SU2_RUN:$PYTHONPATH
 
 # Copied from nimbix/image-common
 RUN apt-get -y update && \
@@ -49,4 +48,4 @@ EXPOSE 22
 
 COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
 
-CMD sudo /home/nimbix/init.sh
+CMD sudo /data/init.sh

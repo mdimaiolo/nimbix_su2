@@ -2,4 +2,4 @@
 
 cd /data
 
-sudo chmod -R 777 /data/SU2_HOME
+su - nimbix

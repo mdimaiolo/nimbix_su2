@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /usr/local
 
 RUN mkdir -p /usr/local/SU2
-RUN ["/bin/bash", "-c", "chmod -R 0777 /usr/local/SU2"]
+RUN chmod -R 0777 /usr/local/SU2
 
 #RUN curl -O "https://github.com/su2code/SU2/releases/download/v7.1.1/SU2-v7.1.1-linux64-mpi.zip"
 #RUN tar xvf "SU2-v7.1.1-linux64-mpi.zip"
@@ -35,7 +35,7 @@ RUN ["/bin/bash", "-c", "chmod -R 0777 /usr/local/SU2"]
 ADD ./SU2 /usr/local/SU2
 ADD ./init /usr/local/SU2
 
-RUN ["/bin/bash", "-c", "chmod -R 0777 /data/SU2_HOME"]
+RUN chmod -R 0777 /data/SU2_HOME
 
 RUN export SU2_HOME=/data/SU2_HOME
 RUN export SU2_RUN=/usr/local/SU2/bin

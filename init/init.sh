@@ -2,6 +2,8 @@
 
 cd /
 
+# compile SU2 here
+
 export SU2_HOME=/data/SU2
 export SU2_RUN=/usr/local/SU2/bin
 export PATH=$PATH:$SU2_RUN

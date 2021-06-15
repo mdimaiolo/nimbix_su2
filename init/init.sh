@@ -3,7 +3,7 @@
 cd /
 
 export SU2_HOME=/data/SU2
-export SU2_RUN=/usr/local/SU2/bin
+export SU2_RUN=/usr/local/SU2/SU2/bin
 export PATH=$PATH:$SU2_RUN
 export PYTHONPATH=$PYTHONPATH:$SU2_RUN
 

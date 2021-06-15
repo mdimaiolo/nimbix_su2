@@ -19,7 +19,7 @@
     ],
     "commands": {
         "Batch": {
-            "path": "/usr/local/SU2/init.sh",
+            "path": "/usr/local/SU2/init/init.sh",
             "interactive": false,
             "name": "Batch",
             "description": "Run a batch command using /bin/bash.  The output may be monitored directly in your web browser.",

@@ -2,22 +2,22 @@ FROM ubuntu:18.04
 ENV LANG C.UTF-8
 
 RUN apt-get update && apt-get install -y \
-    python3 \
+    python3-dev \
     pkg-config \
     python3-pip \
     git \
     build-essential \
-    python3-numpy \
-    python3-scipy \
-    python3-mpi4py \
-    swig \
+    gcc \
+    g++ \
+    python3-setuptools \
     libopenmpi-dev \
     openmpi-bin \
-    ccache
-# && rm -rf /var/lib/apt/lists/* \
-# && update-alternatives --install /usr/bin/python python /usr/bin/python3 10 \
-# && /usr/sbin/update-ccache-symlinks \
-# && echo 'export PATH="/usr/lib/ccache:$PATH"' | tee -a ~/.bashrc 
+    python3-mpi4py \
+    swig \
+    python3-numpy \
+    python3-scipy
+
+RUN apt remove -y mpich
 
 # Copied from nimbix/image-common
 RUN apt-get -y update && \
@@ -29,15 +29,20 @@ RUN apt-get -y update && \
 # Expose port 22 for local JARVICE emulation in docker
 EXPOSE 22
 
+# Change working directory
 WORKDIR /usr/local
 
+# Create a directory to compile SU2
 RUN mkdir -p /usr/local/SU2
 
-ADD --chown=root:root ./SU2 /usr/local/SU2
-ADD --chown=root:root ./init /usr/local/SU2
+# Add all source files to the newly created directory
+ADD --chown=root:root ./ /usr/local/SU2
 
+# Ensure full access
 RUN sudo chmod -R 0777 /usr/local/SU2
 
+# Save Nimbix AppDef
 COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
 
-CMD /usr/local/SU2/init.sh
+# This is a marker - the actual init.sh call is in AppDef.json
+CMD /usr/local/SU2/init/init.sh

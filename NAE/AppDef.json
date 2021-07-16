@@ -1,15 +1,15 @@
 {
-    "name": "SU2",
+    "name": "SU2-Debug",
     "description": "Multiphysics Simulation and Design Software",
-    "author": "Matthew DiMaiolo",
-    "licensed": false,
+    "author": "SU2 Foundation",
+    "licensed": true,
     "classifications": [
         "Simulation",
         "Simulation/Computational Fluid Dynamics",
         "Simulation/Multiphysics"
     ],
     "machines": [
-        "*"
+        "n[9]*"
     ],
     "vault-types": [
         "FILE",
@@ -20,32 +20,14 @@
     "commands": {
         "Batch": {
             "path": "/usr/local/SU2/init/init.sh",
-            "interactive": false,
-            "name": "Batch",
-            "description": "Run a batch command using /bin/bash.  The output may be monitored directly in your web browser.",
+            "interactive": true,
+            "name": "SU2 Batch",
+            "description": "Run a batch command using /bin/bash.  Path must be specified within /data/SU2.",
             "parameters": {
-                "-l": {
-                    "name": "-l",
-                    "description": "-l",
-                    "type": "CONST",
-                    "value": "-l",
-                    "positional": true,
-                    "required": true
-                },
-                "-c": {
-                    "name": "-c",
-                    "description": "-c",
-                    "type": "CONST",
-                    "value": "-c",
-                    "positional": true,
-                    "required": true
-                },
-                "command": {
-                    "name": "Command",
-                    "description": "Command to run",
-                    "type": "STR",
-                    "positional": true,
-                    "required": true
+                "-file": {
+                    "name": "Bash file from /data/SU2",
+                    "type": "FILE",
+					"required": true
                 }
             }
         },
@@ -55,21 +37,6 @@
             "name": "Server",
             "description": "Launch a session with all boot services, including SSH (if installed).  Connection address and credentials will appear in your web browser once available.",
             "parameters": {}
-        },
-        "GUI": {
-            "path": "/usr/local/bin/nimbix_desktop",
-            "interactive": true,
-            "name": "GUI",
-            "description": "Run a GUI command, and connect interactively directly from your web browser (requires Nimbix Desktop in image).",
-            "parameters": {
-                "command": {
-                    "name": "Command",
-                    "description": "Command to run",
-                    "type": "STR",
-                    "positional": true,
-                    "required": true
-                }
-            }
         }
     },
     "image": {
